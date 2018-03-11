@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Valuation Report</title>
+    <link rel="stylesheet" href="assets/css/custom.css"> <!-- Favicon -->
+    <link rel="stylesheet" href="assets/css/report.css">
+    <link rel="shortcut icon" href="assets/img/favicon.ico">
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans%3A300%2C400%2C600%2C700%2C800%7CPlayfair+Display%7CRoboto%7CRaleway%7CSpectral%7CRubik">
+    <!-- CSS Global Compulsory -->
+    <link rel="stylesheet" href="https://bctc-cdn.nyc3.digitaloceanspaces.com/unify/vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="https://bctc-cdn.nyc3.digitaloceanspaces.com/unify/vendor/icon-line/css/simple-line-icons.css">
+    <link rel="stylesheet" href="https://bctc-cdn.nyc3.digitaloceanspaces.com/unify/vendor/icon-line-pro/style.css">
+
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" href="https://bctc-cdn.nyc3.digitaloceanspaces.com/unify/vendor/icon-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://bctc-cdn.nyc3.digitaloceanspaces.com/unify/vendor/icon-hs/style.css">
+    <link rel="stylesheet" href="https://bctc-cdn.nyc3.digitaloceanspaces.com/unify/vendor/hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" href="https://bctc-cdn.nyc3.digitaloceanspaces.com/unify/vendor/chosen/chosen.css">
+    <link rel="stylesheet" href="https://bctc-cdn.nyc3.digitaloceanspaces.com/unify/vendor/slick-carousel/slick/slick.css">
+    <link rel="stylesheet" href="https://bctc-cdn.nyc3.digitaloceanspaces.com/unify/vendor/master-slider/source/assets/css/masterslider.main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- CSS Customization -->
+    <link rel="stylesheet" href="assets/css/custom.css">
+
+    <!-- CSS Template -->
+    <link rel="stylesheet" href="assets/css/styles.op-real-estate.css">
+
+    <!-- CSS Customization -->
+    <link rel="stylesheet" href="https://bctc-cdn.nyc3.digitaloceanspaces.com/unify/css/custom.css">
+</head>
+<body class="report" id="report">
+
+    <div class="navBar">
+        <div class="navContainer">
+            <a class="logoContainer" href="index.html">
+                <img src="./assets/img/logo-long-trans.png" alt="">
+            </a>
+            <div class="linksContainer">
+                <a class="linkItem">1-646-122-4142</a>
+                <a class="linkItem">Finished Projects</a>
+                <a class="linkItem">On Going Projects</a>
+                <a class="linkItem">Flipping</a>
+                <a class="linkItem">Current Listings</a>
+                <a class="linkItem">Inquire</a>
+                <a class="linkItem">中文</a>
+            </div>
+        </div>
+    </div>
+    <div class="valuationInfoContainer">
+        <div class="valuationHeader">
+            <h1>Your Home Value Estimate</h1>
+            <div class="input-group">
+                <input type="text" class="form-control rounded-0 form-control-md" placeholder="Enter your street address" id="searchQuery">
+                <input type="number" class="form-control rounded-0 form-control-md" placeholder="Zipcode" id="searchZipcode">
+                <span class="input-group-btn">
+                    <button class="btn btn-md u-btn-primary rounded-0" type="button" id="searchBtn">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+            </div>
+        </div>
+        <div class="reportMap">
+            <div class="reportBasicInfo">
+                <div class="address" id="basicAddress"></div>
+                <div class="others" id="basicOthersInfo"></div>
+                <button id="restart" class="btn btn-danger g-mr-10 g-mb-15">Not your home?</button>
+            </div>
+            <div class="reportMap">
+                <div id="map"></div>
+            </div>
+        </div>
+        <div class="valuationForm">
+            <div class="formText">
+                <h1>We need a little more information about you</h1>
+                <p>Get your free home valuation report in 30 seconds by filling out the form below.</p>
+            </div>
+            <div class="infoForm">
+                <div class="form-group g-mb-20">
+                    <label class="g-mb-10">First Name*</label>
+                    <div class="input-group g-brd-primary--focus">
+                        <div class="input-group-addon d-flex align-items-center g-bg-white g-color-gray-light-v1 rounded-0">
+                            <i class="icon-user-follow"></i>
+                        </div>
+                        <input class="form-control form-control-md border-left-0 rounded-0 pl-0" type="text">
+                    </div>
+                </div>
+                <div class="form-group g-mb-20">
+                    <label class="g-mb-10">Last Name*</label>
+                    <div class="input-group g-brd-primary--focus">
+                        <div class="input-group-addon d-flex align-items-center g-bg-white g-color-gray-light-v1 rounded-0">
+                            <i class="icon-user-following"></i>
+                        </div>
+                        <input class="form-control form-control-md border-left-0 rounded-0 pl-0" type="text">
+                    </div>
+                </div>
+                <div class="form-group g-mb-20">
+                    <label class="g-mb-10">Email*</label>
+                    <div class="input-group g-brd-primary--focus">
+                        <div class="input-group-addon d-flex align-items-center g-bg-white g-color-gray-light-v1 rounded-0">
+                            <i class="icon-envelope"></i>
+                        </div>
+                        <input class="form-control form-control-md border-left-0 rounded-0 pl-0" type="text">
+                    </div>
+                </div>
+                <div class="form-group g-mb-20">
+                    <label class="g-mb-10">Phone*</label>
+                    <div class="input-group g-brd-primary--focus">
+                        <div class="input-group-addon d-flex align-items-center g-bg-white g-color-gray-light-v1 rounded-0">
+                            <i class="icon-phone"></i>
+                        </div>
+                        <input class="form-control form-control-md border-left-0 rounded-0 pl-0" type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="submitContact">
+                    <a href="#!" class="btn btn-lg u-btn-outline-gradient-v1 g-mr-10 g-mb-15" id="revealReport">Get Report</a>
+            </div>
+            
+        </div>
+    </div>
+</body>
+<script src="js/index.js"></script>
+<script src="js/report.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5pB38DhDdodsM5Nk-Sn-et1yH8ueEsFo"></script>
+</html>

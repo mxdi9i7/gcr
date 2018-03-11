@@ -221,36 +221,39 @@ Flushing, NY 11355</h2>
       <section class="topSection">
 		  	<div class="topOverlay"></div>
 			<div class="navBar">
-			<div class="navContainer">
-				<div class="logoContainer">
-					<img src="./assets/img/logo-long-trans.png" alt="">
-					<div class="logoTextContainer">
-						<h1>Global Connect</h1>
-						<p>Realty</p>
+				<div class="navContainer">
+					<a class="logoContainer" href="index.html">
+						<img src="./assets/img/logo-long-trans.png" alt="">
+						<div class="logoTextContainer">
+							<h1>Global Connect</h1>
+							<p>Realty</p>
+						</div>
+					</a>
+					<div class="linksContainer">
+						<a class="linkItem">1-646-122-4142</a>
+						<a class="linkItem">Finished Projects</a>
+						<a class="linkItem">On Going Projects</a>
+						<a class="linkItem">Flipping</a>
+						<a class="linkItem">Current Listings</a>
+						<a class="linkItem">Inquire</a>
+						<a class="linkItem">中文</a>
 					</div>
-					
 				</div>
-				<div class="linksContainer">
-					<a class="linkItem">1-646-122-4142</a>
-					<a class="linkItem">Finished Projects</a>
-					<a class="linkItem">On Going Projects</a>
-					<a class="linkItem">Flipping</a>
-					<a class="linkItem">Current Listings</a>
-					<a class="linkItem">Inquire</a>
-					<a class="linkItem">中文</a>
-				</div>
-			</div>
 			</div>
 			<div class="topContainer">
 				<div class="valuationContainer">
 					<h1>See your home's Estimate Value</h1>
 					<div class="input-group">
-						<input type="text" class="form-control rounded-0 form-control-md" placeholder="Enter your street address">
+						<input type="text" class="form-control rounded-0 form-control-md" placeholder="Enter your street address" id="searchQuery">
+						<input type="number" class="form-control rounded-0 form-control-md" placeholder="Zipcode" id="searchZipcode">
 						<span class="input-group-btn">
-							<button class="btn btn-md u-btn-primary rounded-0" type="button">
+							<button class="btn btn-md u-btn-primary rounded-0" type="button" id="searchBtn">
 								<i class="fa fa-search"></i>
 							</button>
 						</span>
+					</div>
+					<div class="autocomplete">
+
 					</div>
 					<div class="topDecs">
 						<p><strong>Get an instant, online home-value estimate</strong></p>
@@ -1430,6 +1433,8 @@ Flushing, NY 11355</h2>
           duration: 700
         });
       });
-    </script>
+	</script>
+	<script src="js/index.js"></script>
+	<script src="js/gcr.js"></script>
   </body>
 </html>
