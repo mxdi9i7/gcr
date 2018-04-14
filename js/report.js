@@ -4,8 +4,9 @@ const key = 'AIzaSyC5pB38DhDdodsM5Nk-Sn-et1yH8ueEsFo'
 const street = window.sessionStorage.getItem('query')
 const zip = window.sessionStorage.getItem('zip')
 
-$.get(`http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=${id}&address=${street}&citystatezip=${zip}`, (data) => {
+$.get(`http://localhost:4567/deep?id=${id}&street=${street}&zip=${zip}`, (data) => {
     
+    data = $.parseXML(data)
     console.log(data)
     const status = data.getElementsByTagName('code')[0].innerHTML;
     if (status == 0) {
@@ -19,10 +20,10 @@ $.get(`http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=${id}&ad
         const lat = streetObject.childNodes[4].firstChild.nodeValue;
         const long = streetObject.childNodes[5].firstChild.nodeValue;
         const yearBuilt = responseObject.getElementsByTagName('yearBuilt')[0].innerHTML;
-        const lotSize = responseObject.getElementsByTagName('lotSizeSqFt') ? responseObject.getElementsByTagName('lotSizeSqFt')[0] : "N/A";
+        const lotSize = responseObject.getElementsByTagName('lotSizeSqFt') ? responseObject.getElementsByTagName('lotSizeSqFt')[0].innerHTML : "N/A";
         const bedroom = responseObject.getElementsByTagName('bedrooms')[0].innerHTML;
         const bathroom = responseObject.getElementsByTagName('bathrooms')[0].innerHTML;
-        console.log(lotSize)
+        console.log(lotSize.innerHTML)
     
         $('#basicAddress').html(`${streetAddress}, ${city}, ${state} ${zipcode}`)
         $('#basicOthersInfo').html(`
