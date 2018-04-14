@@ -4,7 +4,7 @@ const key = 'AIzaSyC5pB38DhDdodsM5Nk-Sn-et1yH8ueEsFo'
 const street = window.sessionStorage.getItem('query')
 const zip = window.sessionStorage.getItem('zip')
 
-$.get(`http://localhost:4567/deep?id=${id}&street=${street}&zip=${zip}`, (data) => {
+$.get(`http://192.241.150.160:4567/deep?id=${id}&street=${street}&zip=${zip}`, (data) => {
     
     data = $.parseXML(data)
     console.log(data)
