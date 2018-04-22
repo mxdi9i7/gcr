@@ -4,7 +4,7 @@ const key = 'AIzaSyC5pB38DhDdodsM5Nk-Sn-et1yH8ueEsFo'
 const street = window.sessionStorage.getItem('query')
 const zip = window.sessionStorage.getItem('zip')
 
-$.get(`http://192.241.150.160:4567/deep?id=${id}&street=${street}&zip=${zip}`, (data) => {
+$.get(`http://api.gcr.house/deep?id=${id}&street=${street}&zip=${zip}`, (data) => {
     
     data = $.parseXML(data)
     console.log(data)
@@ -70,3 +70,16 @@ $('#restart').click((e) => {
     e.preventDefault();
     $('#searchQuery').focus()
 })
+
+$('#revealReport').click((e) => {
+    const fname = $('#fname').val()
+    const lname = $('#lname').val()
+    const email = $('#email').val()
+    const phone = $('#phone').val()
+    console.log(fname, lname, email, phone)
+    if (!fname || !lname || !email || !phone) {
+        alert('Please fill in all information to get your report.')
+    } else {
+        window.location.href = "./pdf.html"
+    }
+}) 

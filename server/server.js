@@ -10,7 +10,6 @@ app.get('/', (req, res) => {
 app.get('/deep', (req, res) => {
     const { id, street, zip } = req.query;
     axios.get(`http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=${id}&address=${street}&citystatezip=${zip}`).then(data => {
-        console.log(typeof data.data)
         res.send(data.data)
     })
 })

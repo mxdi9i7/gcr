@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Valuation Report</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Valuation Report</title>
+        <link rel="stylesheet" href="assets/css/custom.css"> <!-- Favicon -->
+        <link rel="stylesheet" href="assets/css/report.css">
+        <link rel="shortcut icon" href="assets/img/favicon.ico">
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700" rel="stylesheet">
+        <!-- Google Fonts -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans%3A300%2C400%2C600%2C700%2C800%7CPlayfair+Display%7CRoboto%7CRaleway%7CSpectral%7CRubik">
+        <!-- CSS Global Compulsory -->
+        <link rel="stylesheet" href="https://bctc-cdn.nyc3.digitaloceanspaces.com/unify/vendor/bootstrap/bootstrap.min.css">
+        <link rel="stylesheet" href="https://bctc-cdn.nyc3.digitaloceanspaces.com/unify/vendor/icon-line/css/simple-line-icons.css">
+        <link rel="stylesheet" href="https://bctc-cdn.nyc3.digitaloceanspaces.com/unify/vendor/icon-line-pro/style.css">
+
+        <!-- CSS Implementing Plugins -->
+        <link rel="stylesheet" href="https://bctc-cdn.nyc3.digitaloceanspaces.com/unify/vendor/icon-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://bctc-cdn.nyc3.digitaloceanspaces.com/unify/vendor/icon-hs/style.css">
+        <link rel="stylesheet" href="https://bctc-cdn.nyc3.digitaloceanspaces.com/unify/vendor/hamburgers/hamburgers.min.css">
+        <link rel="stylesheet" href="https://bctc-cdn.nyc3.digitaloceanspaces.com/unify/vendor/chosen/chosen.css">
+        <link rel="stylesheet" href="https://bctc-cdn.nyc3.digitaloceanspaces.com/unify/vendor/slick-carousel/slick/slick.css">
+        <link rel="stylesheet" href="https://bctc-cdn.nyc3.digitaloceanspaces.com/unify/vendor/master-slider/source/assets/css/masterslider.main.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!-- CSS Customization -->
+        <link rel="stylesheet" href="assets/css/custom.css">
+
+        <!-- CSS Template -->
+        <link rel="stylesheet" href="assets/css/styles.op-real-estate.css">
+
+        <!-- CSS Customization -->
+        <link rel="stylesheet" href="https://bctc-cdn.nyc3.digitaloceanspaces.com/unify/css/custom.css">
+    </head>
+</head>
+<body>
+    <div class="pdf">
+        <h1>Report for <span id="fullAddress"></span></h1>
+        <a  class="btn btn-lg g-mr-10 g-mb-15" href="./report.html">< Go back to home</a>
+        <div class="infoContainer">
+            <div class="infoBox">
+                <label>Neighborhood: </label>
+                <span id="neighborhood"></span>
+            </div>
+            <div class="infoBox">
+                <label>Family: </label>
+                <span id="family"></span>
+            </div>
+            <div class="infoBox">
+                <label>Tax assessment year: </label>
+                <span id="taxAssessYear"></span>
+            </div>
+            <div class="infoBox">
+                <label>Tax assessment: </label>
+                <span id="taxAssess"></span>
+            </div>
+            <div class="infoBox">
+                <label>Year Built: </label>
+                <span id="year"></span>
+            </div>
+            <div class="infoBox">
+                <label>Lot Size in Sqft: </label>
+                <span id="lotSize"></span>
+            </div>
+            <div class="infoBox">
+                <label>Building Size in Sqft: </label>
+                <span id="finishedSqft"></span>
+            </div>
+            <div class="infoBox">
+                <label>Bathroom: </label>
+                <span id="bath"></span>
+            </div>
+            <div class="infoBox">
+                <label>Bedroom: </label>
+                <span id="bed"></span>
+            </div>
+            <hr>
+            <div class="infoBox">
+                <label>Last sold date: </label>
+                <span id="lastSoldDate"></span>
+            </div>
+            <div class="infoBox">
+                <label>Last sold price: </label>
+                <span id="lastSoldPrice"></span>
+            </div>
+            <div class="infoBox">
+                <label>Estimate Valuation: </label>
+                <span id="estimate"></span>
+            </div>
+            <!-- <div class="infoBox">
+                <label>Value change: </label>
+                <span id="valueChange"></span>
+            </div>
+            <div class="infoBox">
+                <label>Hight/Low: </label>
+                <span id="high"></span>
+                <span id="low"></span>
+            </div> -->
+        </div>
+        <button class="btn btn-lg u-btn-outline-gradient-v1 g-mr-10 g-mb-15" onClick="window.print()">Generate PDF</button>
+    </div>
+    <script>
+        const query = window.sessionStorage.getItem('query')
+        const zip = window.sessionStorage.getItem('zip')
+        const id = 'X1-ZWz1g884odtszv_8clop';
+        const key = 'AIzaSyC5pB38DhDdodsM5Nk-Sn-et1yH8ueEsFo'
+
+        $.get(`http://api.gcr.house/deep?id=${id}&street=${query}&zip=${zip}`, (data) => {
+            const xmlData = $.parseXML(data)
+            const res = xmlData.getElementsByTagName('result')[0]
+            console.log(res)
+            const street = res.childNodes[2]
+            const streetAddress = street.childNodes[0].firstChild.nodeValue;
+            const zipcode = street.childNodes[1].firstChild.nodeValue;
+            const city = street.childNodes[2].firstChild.nodeValue;
+            const state = street.childNodes[3].firstChild.nodeValue;
+            const yearBuilt = res.getElementsByTagName('yearBuilt')[0].innerHTML;
+            const lotSize = res.getElementsByTagName('lotSizeSqFt') ? res.getElementsByTagName('lotSizeSqFt')[0].innerHTML : "N/A";
+            const bedroom = res.getElementsByTagName('bedrooms')[0].innerHTML;
+            const bathroom = res.getElementsByTagName('bathrooms')[0].innerHTML;
+            const neighborhood = res.getElementsByTagName('region')[0].attributes[0].nodeValue
+            const family =  res.getElementsByTagName('useCode')[0].innerHTML;
+            const taxAssessYear =  res.getElementsByTagName('taxAssessmentYear')[0].innerHTML;
+            const taxAssess =  res.getElementsByTagName('taxAssessment')[0].innerHTML;
+            const buildingSize =  res.getElementsByTagName('finishedSqFt')[0].innerHTML;
+            const lastSoldDate =  res.getElementsByTagName('lastSoldDate')[0].innerHTML;
+            const lastSoldPrice =  res.getElementsByTagName('lastSoldPrice')[0].innerHTML;
+            const estimate =  res.getElementsByTagName('amount')[0].innerHTML;
+            //Filling in data
+            $('#fullAddress').text(streetAddress + ', ' + zipcode)
+            $('#neighborhood').text(neighborhood)
+            $('#family').text(family)
+            $('#taxAssessYear').text(taxAssessYear)
+            $('#taxAssess').text(taxAssess)
+            $('#year').text(yearBuilt)
+            $('#lotSize').text(lotSize)
+            $('#finishedSqft').text(buildingSize)
+            $('#bath').text(bathroom)
+            $('#bed').text(bedroom)
+            $('#lastSoldDate').text(lastSoldDate)
+            $('#lastSoldPrice').text('$' + lastSoldPrice)
+            $('#estimate').text('$' + estimate)
+        })
+
+    </script>
+</body>
+</html>
